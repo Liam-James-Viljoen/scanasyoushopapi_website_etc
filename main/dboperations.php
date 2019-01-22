@@ -12,28 +12,31 @@ class DBOperations{
     //by calling the method connect of DB_connection class
     $this->connection = $db->connect();
   }
+
   function createuser($username, $password, $email, $phonenumber){
-    $stmt=$this->connection->prepare('INSERT INTO Users (username, password, email, phone_number) VALUES (?, ?, ?, ?)');
+    $stmt=$this->connection->prepare('INSERT INTO users (username, password, email, phone_number) VALUES (?, ?, ?, ?)');
     $stmt->bind_param("ssss", $username, $password, $email, $phonenumber);
     if ($stmt->execute())
       return true;
     return false;
   }
-  function selectuser($username){
-    $stmt=$this->connection->prepare('SELECT id, username, password FROM users where username=' . $username);
+
+  function selectuser($p_username){
+    $stmt=$this->connection->prepare('SELECT user_id, username, password FROM users where username=?');
+    $stmt->bind_param("s", $username);
     $stmt->execute();
-    $stmt->bind_result($id, $username, $password);
+    $stmt->bind_result($user_id, $username, $password);
 
     $users = array();
     while($stmt->fetch()){
       $user = array();
-      $user['id'] = id;
+      $user['user_id'] = $user_id;
       $user['username'] = $username;
       $user['password'] = $password;
 
       array_push($users, $user);
     }
-    return users;
+    return $users;
   }
 }
 ?>
