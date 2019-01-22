@@ -73,10 +73,9 @@
      //creating a new dboperation object
      $db = new DBOperations();
      //creating a new record in the database
-     $result = $db->selectuser(
-       $_POST['username']
-     );
-     var_dump($result);
+     $response['error'] = false;
+     $response['message'] = 'Request completed';
+     $response['user'] = $db->selectuser($_POST['username']);
      break;
  }
 

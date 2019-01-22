@@ -23,7 +23,7 @@ class DBOperations{
 
   function selectuser($p_username){
     $stmt=$this->connection->prepare('SELECT user_id, username, password FROM users where username=?');
-    $stmt->bind_param("s", $username);
+    $stmt->bind_param("s", $p_username);
     $stmt->execute();
     $stmt->bind_result($user_id, $username, $password);
 
