@@ -1,9 +1,9 @@
 <?php
 class DBOperations{
-  private $connection
+  private $connection;
 
   function __construct(){
-    require_once direname(__FILE__) . '/dbconnect.php';
+    require_once dirname(__FILE__) . '/dbconnect.php';
 
     //Creating DB_connection object to connect to database
     $db = new DB_connection();
@@ -13,17 +13,16 @@ class DBOperations{
     $this->connection = $db->connect();
   }
   function createuser($username, $password, $email, $phonenumber){
-    $stmt=$this->$connection->prepare('INSERT INTO Users (username, password, email, phonenumber) VALUES (?, ?, ?, ?)');
-    $stmt->bind_param("ssis", $username, $password, $email, $phonenumber);
-    if ($stmt->execute()){
+    $stmt=$this->connection->prepare('INSERT INTO Users (username, password, email, phone_number) VALUES (?, ?, ?, ?)');
+    $stmt->bind_param("ssss", $username, $password, $email, $phonenumber);
+    if ($stmt->execute())
       return true;
-      return false;
-    }
+    return false;
   }
-  function selectuser(){
-    $stmt=$this->$connection->prepare('SELECT id, username, password FROM users');
+  function selectuser($username){
+    $stmt=$this->connection->prepare('SELECT id, username, password FROM users where username=' . $username);
     $stmt->execute();
-    $stmt->bind_param($id, $username, $password);
+    $stmt->bind_result($id, $username, $password);
 
     $users = array();
     while($stmt->fetch()){
