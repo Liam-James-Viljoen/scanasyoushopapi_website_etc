@@ -27,16 +27,15 @@ class DBOperations{
     $stmt->execute();
     $stmt->bind_result($user_id, $username, $password);
 
-    $users = array();
+    $user = array();
     while($stmt->fetch()){
-      $user = array();
       $user['user_id'] = $user_id;
       $user['username'] = $username;
       $user['password'] = $password;
 
-      array_push($users, $user);
+      array_push($user);
     }
-    return $users;
+    return $user;
   }
 }
 ?>

@@ -76,17 +76,7 @@
      $result = $db->selectuser(
        $_POST['username']
      );
-     //if the record is created adding success to response
-     if($result){
-       //record is created means there is no error
-       $response['error'] = false;
-        $response['message'] = 'User search success';
-     }else{
-       //if record is not added that means there is an error
-       $response['error'] = true;
-       //and we have the error message
-       $response['message'] = 'Some error occurred please try again';
-     }
+     var_dump($result);
      break;
  }
 
