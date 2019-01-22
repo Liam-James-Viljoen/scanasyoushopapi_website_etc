@@ -32,8 +32,6 @@ class DBOperations{
       $user['user_id'] = $user_id;
       $user['username'] = $username;
       $user['password'] = $password;
-
-      array_push($user);
     }
     return $user;
   }
