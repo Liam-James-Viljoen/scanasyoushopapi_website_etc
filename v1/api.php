@@ -48,9 +48,7 @@ if(isset($_GET['apicall'])){
       isTheseParametersAvailable(array('username'));
       $response['error'] = false;
       $response['message'] = 'Request completed';
-      $results = $usersTable->find('username', $_POST['username']);
-      $response['user'] = $results;
-    break;
+      $response['user'] = $usersTable->find('username', $_POST['username']);
 }
 
 }else{
