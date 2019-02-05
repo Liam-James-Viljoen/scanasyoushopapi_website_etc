@@ -19,7 +19,7 @@ class DatabaseTable {
 		];
 		$stmt->execute($criteria);
 
-		return $stmt->fetchAll();
+		return $stmt->fetchAll(PDO::FETCH_ASSOC); //Fetch association makes sure it only returns data with it's associated column name. Otherwise it also returns data with column number association
 	}
 //************************************************************************************************************************************************************************************************
 //************************************************************************************************************************************************************************************************
