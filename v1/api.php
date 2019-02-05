@@ -2,6 +2,7 @@
  require_once '../main/constants.php';
  require_once '../main/dboperations.php';
 
+//Makes database operations object
 $usersTable = new DatabaseTable($pdo, 'users', 'user_id');
 
 function isTheseParametersAvailable($params){
@@ -38,13 +39,17 @@ if(isset($_GET['apicall'])){
   switch($_GET['apicall']){
     //**********************************************************************************************************************************************************************
     case 'createuser':
-
+    //Need to add code
     break;
 
     //**********************************************************************************************************************************************************************
     case 'selectuser':
+      //first check the parameters required for this request are available or not
+      isTheseParametersAvailable(array('username'));
+      $response['error'] = false;
+      $response['message'] = 'Request completed';
       $this->$usersTable = $accountsTable;
-      $user = $this->usersTable->find('user_id', $_POST['username']);
+      $response['user'] = $this->usersTable->find('user_id', $_POST['username']);
     break;
 }
 
