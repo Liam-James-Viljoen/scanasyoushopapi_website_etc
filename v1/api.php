@@ -79,6 +79,4 @@ if(isset($_GET['apicall'])){
 //displaying the response in json structure
 echo json_encode($response);
 
-//$this->$usersTable = $accountsTable;
-//			$user = $this->usersTable->find(,user_id);
 ?>
