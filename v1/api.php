@@ -39,12 +39,13 @@ if(isset($_GET['apicall'])){
   switch($_GET['apicall']){
     //**********************************************************************************************************************************************************************
     case 'createuser':
-    isTheseParametersAvailable(array('username','password','email','phonenumber'));
+    isTheseParametersAvailable(array('username','password','email','phonenumber', 'salt'));
 
     $_POST['user']['username'] = $_POST['username'];
     $_POST['user']['password'] = $_POST['password'];
     $_POST['user']['email'] = $_POST['email'];
     $_POST['user']['phone_number'] = $_POST['phonenumber'];
+    $_POST['user']['salt'] = $_POST['salt']
 
     $result = $usersTable->save($_POST['user']);
     //if the record is created adding success to response
