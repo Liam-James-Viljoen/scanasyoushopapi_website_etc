@@ -5,6 +5,8 @@
 //Makes database operations object
 $usersTable = new DatabaseTable($pdo, 'users', 'user_id');
 
+
+
 function isTheseParametersAvailable($params){
 //assuming all parameters are available
 $available = true;
@@ -47,7 +49,7 @@ if(isset($_GET['apicall'])){
     $_POST['user']['phone_number'] = $_POST['phonenumber'];
     $_POST['user']['salt'] = $_POST['salt'];
 
-    $result = $usersTable->save($_POST['user']);
+    $result = $usersTable->insert($_POST['user']);
     //if the record is created adding success to response
     if($result){
       //record is created means there is no error
