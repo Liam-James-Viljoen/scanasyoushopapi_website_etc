@@ -45,7 +45,7 @@ if(isset($_GET['apicall'])){
     $_POST['user']['password'] = $_POST['password'];
     $_POST['user']['email'] = $_POST['email'];
     $_POST['user']['phone_number'] = $_POST['phonenumber'];
-    $_POST['user']['salt'] = $_POST['salt']
+    $_POST['user']['salt'] = $_POST['salt'];
 
     $result = $usersTable->save($_POST['user']);
     //if the record is created adding success to response
