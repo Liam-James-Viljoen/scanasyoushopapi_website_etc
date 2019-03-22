@@ -75,8 +75,6 @@ if(isset($_GET['apicall'])){
     break;
 
     case 'selectitem':
-      //first check the parameters required for this request are available or not
-      isTheseParametersAvailable(array('bar_Code'));
       $response['error'] = false;
       $response['message'] = 'Request completed';
       $response['item'] = $itemsTable->find('bar_code', $_POST['bar_code']);
