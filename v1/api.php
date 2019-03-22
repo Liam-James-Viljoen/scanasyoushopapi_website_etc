@@ -4,6 +4,7 @@
 
 //Makes database operations object
 $usersTable = new DatabaseTable($pdo, 'users', 'user_id');
+$itemsTable = new DatabaseTable($pdo, 'items', 'item_id');
 
 
 
@@ -71,6 +72,16 @@ if(isset($_GET['apicall'])){
       $response['error'] = false;
       $response['message'] = 'Request completed';
       $response['user'] = $usersTable->find('username', $_POST['username']);
+    break;
+
+    case 'selectitem':
+      //first check the parameters required for this request are available or not
+      isTheseParametersAvailable(array('bar_Code'));
+      $response['error'] = false;
+      $response['message'] = 'Request completed';
+      $response['item'] = $itemsTable->find('bar_code', $_POST['bar_code']);
+    break;
+
 }
 
 }else{
